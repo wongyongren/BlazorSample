@@ -1,0 +1,23 @@
+﻿@page "/count"
+@inject MyService myservice
+
+<CascadingValue Value="currentCount">
+    <h1>Count parent</h1>
+
+    <p>Current count is : @currentCount.Count</p>
+
+    <button class="btn btn-primary" onclick="@currentCount.Increment">+1 from parent</button>
+
+    <CountChild></CountChild>
+</CascadingValue>
+
+@code {
+    private CountModel currentCount = new CountModel();
+
+    myservice.RefreshRequested += RefreshMe;
+
+private void RefreshMe()
+    {
+        StateHasChanged();
+    }
+}

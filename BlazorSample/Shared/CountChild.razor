@@ -1,0 +1,13 @@
+﻿<h1>Count child</h1>
+
+<p>Current count is : @currentCount.Count</p>
+
+<button class="btn btn-primary" onclick="@currentCount.Increment">+1 from child</button>
+
+@functions {
+    [CascadingParameter]
+    private CountModel currentCount { get; set; }
+
+    MyService.CallRequestRefresh();
+
+}
